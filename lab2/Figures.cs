@@ -41,6 +41,11 @@ namespace Figures
         {
             Console.WriteLine(this.ToString());
         }
+
+        public override string ToString()
+        {
+            return this.Type + " шириной " + this.Width.ToString() + ", высотой " + this.Height.ToString() + ", площадью " + this.Area().ToString();
+        }
     }
 
     class Square: Rectangle, IPrint
@@ -48,6 +53,11 @@ namespace Figures
         public Square(double size) : base(size, size)
         {
             this.Type = "Квадрат";
+        }
+
+        public override string ToString()
+        {
+            return this.Type + " со стороной " + this.Width.ToString() + ", площадью " + this.Area().ToString();
         }
     }
 
@@ -69,6 +79,11 @@ namespace Figures
         public void Print()
         {
             Console.WriteLine(this.ToString());
+        }
+
+        public override string ToString()
+        {
+            return this.Type + " радиусом " + this.Radius.ToString() + ", площадью " + this.Area().ToString();
         }
     }
 }
