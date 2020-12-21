@@ -11,7 +11,7 @@ namespace lab1
         {
             double res;
             string input;
-            Console.WriteLine("Введите вещественное число");
+            Console.WriteLine("Введите вещественное число ");
             input = Console.ReadLine();
             while (!double.TryParse(input, out res))
             {
