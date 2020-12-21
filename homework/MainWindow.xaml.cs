@@ -93,7 +93,6 @@ namespace homework
 
             timeSearching.Stop();
             SearchingTime.Text = timeSearching.Elapsed.ToString();
-            FindWordField.Text = "";
         }
 
         //Поиск похожих слов
@@ -208,6 +207,81 @@ namespace homework
                 }
             }
             return matrix[str1.Length, str2.Length];
+        }
+
+        private void SaveReport_Click(object sender, RoutedEventArgs e)
+        {
+            //Имя файла отчета
+            string TempReportFileName = "Report_" + DateTime.Now.ToString("dd_MM_yyyy_hhmmss");
+
+            //Диалог сохранения файла отчета
+            Microsoft.Win32.SaveFileDialog fd = new Microsoft.Win32.SaveFileDialog();
+            fd.FileName = TempReportFileName;
+            fd.DefaultExt = ".html";
+            fd.Filter = "HTML Reports|*.html";
+
+            if (fd.ShowDialog() == true)
+            {
+                string ReportFileName = fd.FileName;
+
+                //Формирование отчета
+                StringBuilder b = new StringBuilder();
+                b.AppendLine("<html>");
+
+                b.AppendLine("<head>");
+                b.AppendLine("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>");
+                b.AppendLine("<title>" + "Отчет: " + ReportFileName + "</title>");
+                b.AppendLine("</head>");
+
+                b.AppendLine("<body>");
+
+                b.AppendLine("<h1>" + "Отчет: " + ReportFileName + "</h1>");
+                b.AppendLine("<table border='1'>");
+
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Время чтения из файла</td>");
+                b.AppendLine("<td>" + ElapsedTime.Text + "</td>");
+                b.AppendLine("</tr>");
+
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Слово для поиска</td>");
+                b.AppendLine("<td>" + SampleWord.Text + "</td>");
+                b.AppendLine("</tr>");
+
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Максимальное расстояние для нечеткого поиска</td>");
+                b.AppendLine("<td>" + MaxDistText.Text + "</td>");
+                b.AppendLine("</tr>");
+
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Время четкого поиска</td>");
+                b.AppendLine("<td>" + SearchingTime.Text + "</td>");
+                b.AppendLine("</tr>");
+
+                b.AppendLine("<tr valign='top'>");
+                b.AppendLine("<td>Результаты поиска</td>");
+                b.AppendLine("<td>");
+                b.AppendLine("<ul>");
+
+                foreach (var x in this.SimilarWordsBox.Items)
+                {
+                    b.AppendLine("<li>" + x.ToString() + "</li>");
+                }
+
+                b.AppendLine("</ul>");
+                b.AppendLine("</td>");
+                b.AppendLine("</tr>");
+
+                b.AppendLine("</table>");
+
+                b.AppendLine("</body>");
+                b.AppendLine("</html>");
+
+                //Сохранение файла
+                File.AppendAllText(ReportFileName, b.ToString());
+
+                MessageBox.Show("Отчет сформирован. Файл: " + ReportFileName);
+            }
         }
     }
 }

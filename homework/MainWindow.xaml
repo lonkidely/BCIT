@@ -15,8 +15,9 @@
             <TextBox x:Name="SearchingTime" Height="20" Margin="-185,40,-70,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <Button x:Name="FindWordButton" Content="Найти слово" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" Click="FindWordButton_Click"/>
             <TextBox x:Name="FindWordField" TextWrapping="Wrap" Width="140" Height="20" Margin="-140,40,10,2" VerticalAlignment="Top"/>
-            <Label x:Name="SampleWordLabel" VerticalAlignment="Top" Content="Слово для поиска:" Height="30" Width="180" Margin="60, 15, 0, 0"/>
+            <Label x:Name="SampleWordLabel" VerticalAlignment="Top" Content="Слово для поиска:" Height="30" Width="180" Margin="60, 20, 0, 0"/>
             <TextBox x:Name="SampleWord" Height="20" Margin="-175,50,0,0" VerticalAlignment="Top" Width="180"/>
+            <Button x:Name="SaveReport" Content="Сохранить отчет" Height="20" Margin="-220,0,0,0" VerticalAlignment="Top" Width="140" Click="SaveReport_Click"/>
             <TextBlock x:Name="MaxDistLabel" VerticalAlignment="Top" TextWrapping="WrapWithOverflow" Text="Максимальное расстояние:" Height="40" Width="90" Margin="10, 5, 0, 0" HorizontalAlignment="Center"/>
             <TextBox x:Name="MaxDistText" Height="20" Margin="-165,50,-70,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
             <TextBlock x:Name="MaxThreadCountLabel" VerticalAlignment="Top" TextWrapping="WrapWithOverflow" Text="Количество потоков:" Height="40" Width="90" Margin="10, 5, 0, 0" HorizontalAlignment="Center"/>
